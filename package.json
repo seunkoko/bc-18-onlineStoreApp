@@ -1,0 +1,19 @@
+{
+  "name": "bc-18-onlinestoreapp",
+  "version": "1.0.0",
+  "description": "(This is an online store application where users can also be store owners)",
+  "main": "app.js",
+  "scripts": {
+    "test": "tests/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seunkoko/bc-18-onlineStoreApp.git"
+  },
+  "author": "seunkoko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seunkoko/bc-18-onlineStoreApp/issues"
+  },
+  "homepage": "https://github.com/seunkoko/bc-18-onlineStoreApp#readme"
+}
