@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/seunkoko/bc-18-onlineStoreApp/issues"
   },
-  "homepage": "https://github.com/seunkoko/bc-18-onlineStoreApp#readme"
+  "homepage": "https://github.com/seunkoko/bc-18-onlineStoreApp#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  }
 }
