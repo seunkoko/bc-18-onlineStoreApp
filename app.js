@@ -1,15 +1,19 @@
 
   var express = require('express'),
    bodyParser = require('body-parser'),
+         path = require('path');
          port = 3000,
           app = express();
-
-  // setting up the view engine --> ejs
-  app.set('view engine', 'ejs');
 
   // middlewares && static files --> /public
   app.use(express.static(__dirname + '/public'));
   app.use(bodyParser.urlencoded({ extended: false }));
+
+  // setting up the login page
+  app.get('/', function(req, res) {
+    console.log(req.url);
+    res.sendFile(path.join(__dirname + '/views/login.html'));
+  });
 
   // Handle 404
   app.use(function(req, res) {
