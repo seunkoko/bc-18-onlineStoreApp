@@ -9,7 +9,7 @@
   app.use(express.static(__dirname + '/public'));
   app.use(bodyParser.urlencoded({ extended: false }));
 
-  // setting up the login page
+  // setting up the login/signup page
   app.get('/', function(req, res) {
     console.log(req.url);
     res.sendFile(path.join(__dirname + '/views/login.html'));
