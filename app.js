@@ -15,6 +15,11 @@
     res.sendFile(path.join(__dirname + '/views/login.html'));
   });
 
+  app.get('/:id', function(req, res) {
+    console.log(req.url);
+    res.sendFile(path.join(__dirname + '/views/store.html'));
+  });
+
   // Handle 404
   app.use(function(req, res) {
     res.status(404).send('404: Page not Found');
