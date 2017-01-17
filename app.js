@@ -15,9 +15,9 @@
     res.sendFile(path.join(__dirname + '/views/login.html'));
   });
 
-  app.get('/:id', function(req, res) {
+  app.get('/:id/managestore', function(req, res) {
     console.log(req.url);
-    res.sendFile(path.join(__dirname + '/views/store.html'));
+    res.sendFile(path.join(__dirname + '/views/managestore.html'));
   });
 
   // Handle 404

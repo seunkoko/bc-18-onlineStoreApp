@@ -1,5 +1,5 @@
 	
-	// setting up my database
+	// setting up the database
 	var config = {
 		apiKey: "AIzaSyByIWjvUEphiXmv0RmtRMAHnZYu3PYBvTA",
 		authDomain: "online-store-app.firebaseapp.com",
@@ -7,8 +7,8 @@
 		storageBucket: "online-store-app.appspot.com",
 		messagingSenderId: "814616524832"
 	};
-  var FIR = firebase.initializeApp(config),
-			ref = FIR.database().ref();
+ 	var FIR = firebase.initializeApp(config),
+		ref = FIR.database().ref(),
 	userRef = FIR.database().ref('users'); 
 
 	// DOM Manipulation
@@ -34,6 +34,7 @@
 
 	});
 
+	// function that displays the signup Div
 	function signupShow() {
 		$( "#linkSignup" ).click(function() {
 			console.log("#linkSignup active");
@@ -42,6 +43,7 @@
 		});
 	}
 
+	// function that displays the login Div
 	function loginShow() {
 		$( "#linkLogin" ).click(function() {
 			console.log("#linkLogin active");
@@ -50,11 +52,13 @@
 		});
 	}
 
+	// function to check if the signup textfields are empty
 	function signupInfo(username, email, password) {
 		if ((username.length === 0) || (email.length === 0) || (password.length === 0)) return false;
 		return true;
 	}
 
+	// function to check if the email supplied is valid
 	function validateEmail(email) {
 		let filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
 		if (filter.test(email)) {
@@ -64,13 +68,21 @@
 		}
 	}
 
-	function validateUsername(username) {
+	// function to check if the username (for signup) already exists
+	function validateUsername(name) {
+		var boolToReturn = false;
+
 		userRef.orderByChild("username").on("child_added", function(data) {
-			if (data.val().username === username) return true;
+			// console.log(data.val().username);
+			if (data.val().username === name) {
+				boolToReturn = true;
+			}
 		});
-		return false;
+
+		return boolToReturn;
 	}
 
+	// function that handles signup
 	function signup() {
 		let username = $( "#signupUsername" ).val();
 		let email = $( "#signupEmail" ).val();
@@ -84,19 +96,21 @@
 		let certify = signupInfo(username, email, password);
 		let validateemail = validateEmail(email);
 		let validateusername = validateUsername(username);
-		console.log(certify); 
-		console.log(validateemail);
+		console.log("certify: " + certify); 
+		console.log("email: " + validateemail);
+		console.log("username: " + validateusername);
 
-		if (!validateusername) {
-			alert("Username already taken");
-		} else if (!validateemail ) {
+		// if (validateusername) {
+		// 	alert("Username already taken");
+		// } else 
+		if (!validateemail) {
 			alert("Enter a correct email address");
-		} else if (validateusername && validateemail && certify) {
+		} else if (validateemail && certify) {
 			FIR.auth().createUserWithEmailAndPassword(email, password).then(function(){
 				userRef.push ({
 					username: username,
 					password: password,
-					accesskey: username + "-" + (Math.random() * 500)
+					accesskey: username + "-" + Math.ceil(Math.random() * 500)
 				});
 				alert("succesfully signed up");
 				location.href = "http://localhost:3000/";
@@ -113,6 +127,7 @@
 		}
 	}
 
+	// function that handles login
 	function login() {
 		let username = $( "#loginUsername" ).val();
 		let password = $( "#loginPassword" ).val();
@@ -127,7 +142,7 @@
 		});	
 
 		if (certify) {
-			location.href = "http://localhost:3000/" + loginkey;
+			location.href = "http://localhost:3000/" + loginkey + "/managestore";
 		} else {
 			alert("username/password incorrect");
 		}
