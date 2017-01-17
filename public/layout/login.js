@@ -142,7 +142,7 @@
 		});	
 
 		if (certify) {
-			location.href = "http://localhost:3000/" + loginkey + "/managestore";
+			location.href = "http://localhost:3000/managestore/" + loginkey;
 		} else {
 			alert("username/password incorrect");
 		}

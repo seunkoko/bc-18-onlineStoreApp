@@ -8,14 +8,30 @@
 				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 				<link rel="stylesheet" type="text/css" href="/styles/stylesheet.css">
 				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+				<script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
 				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-				<script type="text/javascript" src="/layout/login.js"></script>
+				<script type="text/javascript" src="/layout/managestore.js"></script>
 				<script type="text/javascript" src="../app.js"></script>
 			</head>
 
 			<body>
 				<div class="page-header">
 					<h2>My Online Store</h2>
+					<div class="manageStroreNav" id="viewProduct">  
+						View Products
+					</div>
+					<div class="manageStroreNav" id="addProduct">
+						Add Product
+					</div>
+				</div>
+
+				<div class="container-fluid page-body-ms" id="managestoreMain">
+					<div id="divViewProduct">
+						View Products
+					</div>
+					<div id="divAddProduct">
+						Add Product
+					</div>
 				</div>
 			</body>
 		</html>
