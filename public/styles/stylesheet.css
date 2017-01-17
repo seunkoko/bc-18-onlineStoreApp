@@ -28,6 +28,12 @@
 		cursor: pointer;
 	}
 
+	.notValid {
+		border-style: solid;
+		border-color: #f44242;
+		border-width: 2px;
+	}
+
 	/*.btnLogin {
 		border-style: solid;
 		border-color: #4d4dff;
