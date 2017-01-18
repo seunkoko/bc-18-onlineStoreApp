@@ -16,7 +16,10 @@
 
 			<body>
 				<div class="page-header">
-					<h2>My Online Store</h2>
+					<h2 id="headerText"></h2>
+					<div class="manageStroreNav" id="signout">  
+						<a href="">sign out</a>
+					</div>
 					<div class="manageStroreNav" id="viewProduct">  
 						View Products
 					</div>
@@ -26,11 +29,35 @@
 				</div>
 
 				<div class="container-fluid page-body-ms" id="managestoreMain">
-					<div id="divViewProduct">
-						View Products
-					</div>
-					<div id="divAddProduct">
-						Add Product
+					<div id="shareurl"></div>
+
+					<div id="divViewProduct"></div>	
+
+					<div class="col col-md-offset-4 col-md-4" id="divAddProduct">
+						<label for="productName">Product Name:</label>
+						<input id="productName" type="text" class="form-control addProduct" name="productname" placeholder="product name">
+
+						<label for="productPrice">Product Price:</label>
+						<input id="productPrice" type="text" class="form-control addProduct" name="productprice" placeholder="10">
+
+						<label for="productCat">Category:</label>
+						<select class="form-control addProduct" id="productCat">
+							<option>Gadgets</option>
+							<option>Produce</option>
+							<option>Weavons</option>
+							<option>Female accessories</option>
+							<option>Male accessories</option>
+							<option>Trouser/Pants</option>
+							<option>Shirts</option>
+							<option>Car</option>
+							<option>Shoes</option>
+							<option>Wrist-watches</option>
+							<option>Others</option>
+						</select>
+
+						<div class="col-md-6 col-md-offset-4 btnProductadd">
+							<button class="btn btn-default" id="productaddBtn">ADD</button>
+						</div>
 					</div>
 				</div>
 			</body>

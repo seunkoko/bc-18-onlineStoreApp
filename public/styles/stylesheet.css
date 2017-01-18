@@ -55,3 +55,61 @@
 		margin-right: 4% !important;
 		cursor: pointer;
 	}
+
+	.addProduct {
+		margin-bottom: 5% !important;
+	}
+
+	.btnProductadd {
+		margin-top: 15% !important;
+		height: 10px !important;
+	}
+
+	.toViewProduct {
+		width: 20% !important;
+		height: 200px !important;
+		margin: 2% !important;
+		margin-bottom: 2% !important;
+		padding: 1% !important;
+		text-align: center;
+	}
+
+	.productImage {
+		height: 120px;
+		width: 100%;
+	}
+
+	.priceHolder {
+		border-radius: 30% !important;
+		background-color: greenyellow;
+		width: 40%;
+		height: 25px;
+		text-align: center;
+		margin: 5% !important;
+	}
+
+	#shareurl {
+		color: blue;
+		float: right;
+		margin-right: 5%;
+		margin-top: 1% !important;
+	}
+
+	#signout {
+		width: 5% !important;
+	}
+
+	#divViewProduct {
+		padding: 5% !important;
+		height: 100% !important;
+		margin-right: 10px !important;
+		margin-left: 10px !important;
+	}
+
+	#divAddProduct {
+		padding: 5% !important;
+	}
+
+	
+
+	
