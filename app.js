@@ -1,13 +1,11 @@
 
-	require('dotenv').config();
-
 	var express = require('express'),
 		   path = require('path'),
 			app = express();
 
 	// middlewares && static files --> /public
 	app.use(express.static(__dirname + '/public'));
-	app.set('port', 8080 || 3000);
+	app.set('port', process.env.PORT);
 
 	// setting up the login/signup page
 	app.get('/', function(req, res) {

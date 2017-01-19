@@ -13,18 +13,23 @@
 	
 	// DOM manipulation
 	$(document).ready(function() {
-		let usernameArray = (document.URL).split('/');
-		let shareusername = decodeURI(usernameArray[usernameArray.length - 1]);
-		let username = decodeURI(usernameArray[usernameArray.length - 1].split('-')[0]);
+		console.log(document.URL);
 		
-		$( "#sharedHeader" ).text(shareusername.toUpperCase() + " Store"); console.log(shareusername);
+		let usernameArray = (document.URL).split('/');
+		let username = decodeURI(usernameArray[usernameArray.length - 1].split('-')[0]);
+		let route = usernameArray;
+		route.pop();
+		route.pop();
+		let routebase = decodeURI(route.join("/"));
+		
+		$( "#sharedHeader" ).text(username.toUpperCase() + " Store"); 
 
 		onloadViewProduct(username, "#sharedMain");
 
 		let usernameUpper = username.toUpperCase();
 		$( "#headerText" ).text(usernameUpper + " Store"); 
 
-		$( "#shareurl" ).text("http://localhost:3000/" + username);
+		$( "#shareurl" ).text(routebase + "/" + username);
 
 		$( "#divViewProduct" ).hide();
 
@@ -32,7 +37,7 @@
 			event.preventDefault(); 
 			FIR.auth().signOut().then(function() {
 				alert("Logged out");
-				location.href = "http://localhost:3000/";
+				location.href = routebase;
 			}, function(error) {
 				console.log(error.code);
 				console.log(error.message);

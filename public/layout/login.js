@@ -13,6 +13,11 @@
 
 	// DOM Manipulation
 	$(document).ready(function() {
+		let usernameArray = (document.URL).split('/');
+		let route = usernameArray;
+		route.pop();
+		let routebase = decodeURI(route.join("/"));
+		console.log(routebase);
 
 		// handles page layout
 		$( "#signup" ).hide();
@@ -20,7 +25,7 @@
 		$( "#loginBtn" ).click(function() {
 			event.preventDefault();
 			console.log("#loginBtn active");
-			login();
+			login(routebase);
 		});
 
 		$( "#signupBtn" ).on('click', function(event) {
@@ -128,7 +133,7 @@
 	}
 
 	// function that handles login
-	function login() {
+	function login(routebase) {
 		let username = $( "#loginUsername" ).val();
 		let password = $( "#loginPassword" ).val();
 		let loginkey = ""
@@ -142,7 +147,7 @@
 		});	
 
 		if (certify) {
-			location.href = "http://localhost:3000/managestore/" + loginkey;
+			location.href = routebase + "/managestore/" + loginkey;
 		} else {
 			alert("username/password incorrect");
 		}
