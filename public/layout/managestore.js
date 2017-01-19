@@ -62,7 +62,7 @@
 
 			let productName = $( "#productName" ).val();
 			let productPrice = $( "#productPrice" ).val();
-			let productCat = $( "#productCat" ).val();
+			let productCat = $( "#productCat" ).val().toLowerCase();
 			// let productImage = $( "#imageToUpload" ).val();
 			let productStock = $( "#productStock" ).val();
 
