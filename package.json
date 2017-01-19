@@ -4,7 +4,8 @@
   "description": "(This is an online store application where users can also be store owners)",
   "main": "app.js",
   "scripts": {
-    "test": "tests/"
+    "test": "tests/",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,6 @@
     "dotenv": "^4.0.0",
     "express": "^4.14.0",
     "firebase": "^3.6.5"
-  }
+  },
+  "devDependencies": {}
 }
