@@ -1,11 +1,11 @@
 
 	var express = require('express'),
-				 path = require('path'),
-				 port = 3000,
-					app = express();
+		   path = require('path'),
+			app = express();
 
 	// middlewares && static files --> /public
 	app.use(express.static(__dirname + '/public'));
+	app.set('port', 3000);
 
 	// setting up the login/signup page
 	app.get('/', function(req, res) {
@@ -33,7 +33,9 @@
 	});
 
 	// server listening on port 3000
-	app.listen(port);
-	console.log('server running on port ' + port);
+	app.listen(app.get('port'), function() {
+		console.log('-------SERVER STARTED-------');
+	});
+
 
 	
