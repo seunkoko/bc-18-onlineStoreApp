@@ -14,8 +14,8 @@
 	// DOM manipulation
 	$(document).ready(function() {
 		console.log(document.URL);
-		let usernameArray = (document.URL).split('/')
-		let username = usernameArray[usernameArray.length - 1].split('-')[0];
+		let usernameArray = (document.URL).split('/');
+		let username = decodeURI(usernameArray[usernameArray.length - 1].split('-')[0]);
 
 		let usernameUpper = username.toUpperCase();
 		$( "#headerText" ).text(usernameUpper + " Store");
@@ -25,7 +25,7 @@
 		$( "#divViewProduct" ).hide();
 
 		$( "#signout" ).on('click', function(event) {
-    	event.preventDefault(); 
+    		event.preventDefault(); 
 			FIR.auth().signOut().then(function() {
 				alert("Logged out");
 				location.href = "http://localhost:3000/";
@@ -36,15 +36,23 @@
 		});
 
 		$( "#productaddBtn" ).on('click', function(event) {
-    	event.preventDefault(); 
+    		event.preventDefault(); 
 			console.log("#productaddBtn active");
 
 			let productName = $( "#productName" ).val();
 			let productPrice = $( "#productPrice" ).val();
 			let productCat = $( "#productCat" ).val();
-			console.log(productName + " " + productPrice + " " + productCat);
-
-			addProduct(username, productName, productPrice, productCat);
+			let productImage = $( "#imageToUpload" ).val();
+			let productStock = $( "#productStock" ).val();
+			console.log(productName + " " + productPrice + " " + productCat + " " + productImage + " " + productStock);
+			
+			let imageTested = testUploadedImage(productImage); 
+			let imageToSave = productImage.split("\\");
+			if (imageTested) {
+				addProduct(username, productName, productPrice, productCat, productStock);
+			} else {
+				addProduct(username, productName, productPrice, productCat, productStock);
+			}	
 		});	
 
 		$( "#addProduct" ).click(function() {
@@ -76,6 +84,7 @@
 							let name = key;
 							let price = "$" + snapshot.val()[key].price;
 							let category = snapshot.val()[key].category;
+							let stock = snapshot.val()[key].stock;
 
 							if (category === "Trouser/Pants") {
 								category = "trouser";
@@ -85,7 +94,7 @@
 								category = "watch";
 							}
 
-							displayProduct(name, price, category);
+							displayProduct(name, price, category, stock);
 						}
 
 					}, function(error) {
@@ -102,23 +111,26 @@
 	}
 
 	// function that appends the products attached to a store for display
-	function displayProduct(name, price, img) {
+	function displayProduct(name, price, cat, stock) {
 		$("<div class='col col-md-4 toViewProduct'>"
-				+ "<img src='/images/" + img + ".PNG' class='productImage' alt='image' />"
+				+ "<img src='/images/" + cat + ".PNG' class='productImage' alt='image' />"
 				+ "<label class='productLabel'>" + name + "</label>"
 				+ "<div class='priceHolder'>"
-				+	"<p class='priceTag'>" + price + "</p>"
+				+ "<p class='priceTag'>" + price + "</p>"
+				+ "</div>"
+				+ "<div class='stockHolder'>"
+				+ "<p class='priceTag'>Available: " + stock + "</p>"
 				+ "</div>" 
 				+ "</div>")
 		.appendTo("#divViewProduct");
 	}
 
 	// function that updates the user's store account with details of product
-	function addProduct(userName, productName, productPrice, productCat) {
-		let certify = validatePrice(productPrice);
-		console.log("validatePrice: " + certify);
+	function addProduct(userName, productName, productPrice, productCat, productStock) {
+		let certifyPrice = validatePrice(productPrice);
+		let certifyStock = validatePrice(productStock);
 
-		if (!certify) {
+		if (!certifyStock || !certifyPrice) {
 			alert("Price should be a number");
 		} else if (!isFieldEmpty(productName, productPrice)) {
 			alert("Enter details in all boxes");
@@ -130,12 +142,14 @@
 
 					storeRef.child(productName).set({
 						price: productPrice,
-						category: productCat
+						category: productCat,
+						stock: productStock
 					});
 
 					alert("Product added");
 					setFieldEmpty("productName");
 					setFieldEmpty("productPrice");
+					setFieldEmpty("productStock");
 				}
 			});
 
@@ -172,4 +186,21 @@
 	function setFieldEmpty(fieldId) {
 		$("#" + fieldId).val("")
 	}
+
+	// function to test extension for uploaded images
+	function testUploadedImage(image) {
+		let testExtensionArray1 = image.split("/");
+		let testExtensionArray2 = testExtensionArray1[testExtensionArray1.length - 1].split(".");
+		let testExtension = testExtensionArray2[testExtensionArray2.length - 1].toLowerCase();
+		let arrayExtension = ["jpeg", "jfif", "gif", "png"];
+		
+		for (let i = 0; i < arrayExtension.length; i++) {
+			if (arrayExtension[i] === testExtension) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 

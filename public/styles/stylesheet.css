@@ -1,6 +1,9 @@
 
 	* {
-		font-family: "jaf-facitweb","Helvetica Neue",Arial,sans-serif;
+		/*font-family: "jaf-facitweb","Helvetica Neue",Arial,sans-serif;*/
+		font-family: "Comic Sans MS", cursive, sans-serif;
+		font-weight: bold;
+		color: #0d0d0d;
 		margin-top: 0px !important; 
 		padding-top: 0px !important;
 		padding-right: 0px !important;
@@ -11,29 +14,62 @@
 		padding-bottom: 0px !important; */
 	}
 
+	.glyphicon {
+		width: 30px;
+	}
+
 	.page-header {
+		border-style: solid;
+		border-color: #f2f2f2;
+		border-bottom: thick double #999999;
 		padding-top: 40px !important;
 		padding-left: 30px !important;
-		height: 100px !important;
+		height: 105px !important;
+		background-color: #f2f2f2;
+	}
+
+	.page-footer {
+		background-color: #ffffff;
+		height: 80px;
+		width: auto;
+		text-align: center;
+		padding-top: 1% !important;
+		color: #999999;
+	}
+
+	.loginMainPage {
+		background-image: url("http://localhost:3000/images/loginBackground.jpg");
+		background-repeat: no-repeat;
+		background-size: 100% 550px;
+		width: auto !important;
+		height: 560px !important;
+		opacity: 0.9;
 	}
 
 	.main {
-		border-style: solid;
+		background-color: #f2f2f2;
+		/*border-style: solid;
 		border-color: #f0f5f5;
-		border-width: 2px;
+		border-width: 2px;*/
 		margin-top: 8% !important;
 		padding: 3% !important;
+		opacity: 1;
 	}
 
 	.input-group {
 		margin-bottom: 8% !important;
 	}
 
-	.linkpost {
+	.linkpost > p {
 		margin-top: 7% !important;
 		display: block;
-		color: #4d4dff;
+		font-size: 1.1em;
+		color: #0040ff !important;
 		cursor: pointer;
+	}
+
+	.linkpost > p:hover {
+		font-size: 1.2em;
 	}
 
 	.notValid {
@@ -50,10 +86,20 @@
 	}
 
 	.manageStroreNav {
+		border-style: solid;
+		border-color: #f2f2f2;
+		border-left: thick double #999999;
+		border-width: 2px;
 		float: right;
-		width: 10%;
-		margin-right: 4% !important;
+		width: 12%;
+		/*margin-right: 2% !important;*/
+		padding-right: 2% !important;
 		cursor: pointer;
+		text-align: right;
+	}
+
+	.manageStroreNav:hover {
+		font-size: 1.2em;
 	}
 
 	.addProduct {
@@ -81,32 +127,55 @@
 
 	.priceHolder {
 		border-radius: 30% !important;
-		background-color: greenyellow;
+		background-color: #ff9900;
 		width: 40%;
 		height: 25px;
+		align-self: center;
 		text-align: center;
-		margin: 5% !important;
+		margin-top: 3% !important;
+		margin-bottom: 3% !important;
+		margin-right: auto !important;
+		margin-left: auto !important;
+	}
+
+	.btn {
+		width: 50%;
+		text-align: center !important;
+		padding: 5% !important;
+	}
+
+	.page-body-ms {
+		background-image: url("http://localhost:3000/images/viewBackground.jpg");
+		background-repeat: no-repeat;
+		background-size: 100% 550px;
+		height: 550px;
+		width: 100%;
+		/*background-color: #404040 !important;*/
+		opacity: 0.5%
 	}
 
 	#shareurl {
-		color: blue;
+		color: #003366;
 		float: right;
 		margin-right: 5%;
 		margin-top: 1% !important;
+		font-size: 1.2em;
 	}
 
 	#signout {
-		width: 5% !important;
+		width: 9% !important;
 	}
 
 	#divViewProduct {
-		padding: 5% !important;
+		padding-top: 3% !important;
+		padding-bottom: 5% !important;
 		height: 100% !important;
 		margin-right: 10px !important;
 		margin-left: 10px !important;
 	}
 
 	#divAddProduct {
+		margin-top: 2% !important;
 		padding: 5% !important;
 	}
 
