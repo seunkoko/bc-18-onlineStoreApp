@@ -42,7 +42,7 @@
 		$( "#signupBtn" ).on('click', function(event) {
 		event.preventDefault(); 
 			console.log("#signupBtn active");
-			signup();		
+			signup(routebase);		
 		});
 
 		signupShow();
@@ -99,7 +99,7 @@
 	}
 
 	// function that handles signup
-	function signup() {
+	function signup(routebase) {
 		let username = $( "#signupUsername" ).val();
 		let email = $( "#signupEmail" ).val();
 		let password = $( "#signupPassword" ).val();
@@ -129,7 +129,7 @@
 					accesskey: username + "-" + Math.ceil(Math.random() * 500)
 				});
 				alert("succesfully signed up");
-				location.href = "http://localhost:3000/";
+				location.href = routebase;
 			}).catch(function(error) {
 				success = false;
 				errorCode = error.code;
