@@ -24,7 +24,7 @@
 		});
 
 		$( "#signupBtn" ).on('click', function(event) {
-    	event.preventDefault(); 
+		event.preventDefault(); 
 			console.log("#signupBtn active");
 			signup();		
 		});

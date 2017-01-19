@@ -7,25 +7,29 @@
 		storageBucket: "online-store-app.appspot.com",
 		messagingSenderId: "814616524832"
 	};
- 	var FIR = firebase.initializeApp(config),
-		ref = FIR.database().ref(),
-	userRef = FIR.database().ref('users'); 
+ 	var FIR = firebase.initializeApp(config);
+	var	ref = FIR.database().ref();
+	var userRef = FIR.database().ref('users'); 
 	
 	// DOM manipulation
 	$(document).ready(function() {
-		console.log(document.URL);
 		let usernameArray = (document.URL).split('/');
+		let shareusername = decodeURI(usernameArray[usernameArray.length - 1]);
 		let username = decodeURI(usernameArray[usernameArray.length - 1].split('-')[0]);
+		
+		$( "#sharedHeader" ).text(shareusername.toUpperCase() + " Store"); console.log(shareusername);
+
+		onloadViewProduct(username, "#sharedMain");
 
 		let usernameUpper = username.toUpperCase();
-		$( "#headerText" ).text(usernameUpper + " Store");
+		$( "#headerText" ).text(usernameUpper + " Store"); 
 
-		$( "#shareurl" ).text("share url: http://localhost:3000/" + username);
+		$( "#shareurl" ).text("http://localhost:3000/" + username);
 
 		$( "#divViewProduct" ).hide();
 
 		$( "#signout" ).on('click', function(event) {
-    		event.preventDefault(); 
+			event.preventDefault(); 
 			FIR.auth().signOut().then(function() {
 				alert("Logged out");
 				location.href = "http://localhost:3000/";
@@ -36,7 +40,7 @@
 		});
 
 		$( "#productaddBtn" ).on('click', function(event) {
-    		event.preventDefault(); 
+			event.preventDefault(); 
 			console.log("#productaddBtn active");
 
 			let productName = $( "#productName" ).val();
@@ -63,13 +67,13 @@
 		$( "#viewProduct" ).click(function() {
 			$( "#divViewProduct" ).show('slow');
 			$( "#divAddProduct" ).hide('slow');	
-			onloadViewProduct(username);
+			onloadViewProduct(username, "#divViewProduct");
 		});
 
 	});
 
 	// function that loads the products for display on the viewProduct
-	function onloadViewProduct(name) {
+	function onloadViewProduct(name, appendiv) {
 
 		userRef.on("value", function(snapshot) {
 			emptyViewDiv();
@@ -94,7 +98,7 @@
 								category = "watch";
 							}
 
-							displayProduct(name, price, category, stock);
+							displayProduct(name, price, category, stock, appendiv);
 						}
 
 					}, function(error) {
@@ -111,7 +115,7 @@
 	}
 
 	// function that appends the products attached to a store for display
-	function displayProduct(name, price, cat, stock) {
+	function displayProduct(name, price, cat, stock, appendiv) {
 		$("<div class='col col-md-4 toViewProduct'>"
 				+ "<img src='/images/" + cat + ".PNG' class='productImage' alt='image' />"
 				+ "<label class='productLabel'>" + name + "</label>"
@@ -122,7 +126,8 @@
 				+ "<p class='priceTag'>Available: " + stock + "</p>"
 				+ "</div>" 
 				+ "</div>")
-		.appendTo("#divViewProduct");
+		.appendTo(appendiv);
+		console.log(appendiv);
 	}
 
 	// function that updates the user's store account with details of product

@@ -18,6 +18,11 @@
 		width: 30px;
 	}
 
+	.input-group {
+		color: #0d0d0d !important;
+		font-weight: bold !important;
+	}
+
 	.page-header {
 		border-style: solid;
 		border-color: #f2f2f2;
@@ -34,7 +39,20 @@
 		width: auto;
 		text-align: center;
 		padding-top: 1% !important;
-		color: #999999;
+		color: #1a1a1a;
+	}
+
+	.urlIcon {
+		height: 40px;
+		width: 40px;
+		float: right;
+		margin-top: 1% !important;
+		margin-right: 1% !important;
+		border-radius: 20%;
+	}
+
+	.urlIcon:hover {
+		opacity: 0.7;
 	}
 
 	.loginMainPage {
@@ -43,17 +61,19 @@
 		background-size: 100% 550px;
 		width: auto !important;
 		height: 560px !important;
-		opacity: 0.9;
+		opacity: 0.95;
 	}
 
 	.main {
-		background-color: #f2f2f2;
+		/*background-color: #f2f2f2;*/
+		background-color: #0d0d0d;
+		background-image: url("http://localhost:3000/images/silverbg.jpg");
 		/*border-style: solid;
 		border-color: #f0f5f5;
 		border-width: 2px;*/
 		margin-top: 8% !important;
 		padding: 3% !important;
-		opacity: 1;
+		opacity: 0.9;
 	}
 
 	.input-group {
@@ -63,13 +83,14 @@
 	.linkpost > p {
 		margin-top: 7% !important;
 		display: block;
-		font-size: 1.1em;
-		color: #0040ff !important;
+		font-size: 1.3em;
+		/*color: #0040ff !important;*/
+		color: #000000 !important;
 		cursor: pointer;
 	}
 
 	.linkpost > p:hover {
-		font-size: 1.2em;
+		font-size: 1.5em;
 	}
 
 	.notValid {
@@ -126,7 +147,7 @@
 	}
 
 	.priceHolder {
-		border-radius: 30% !important;
+		border-radius: 100% !important;
 		background-color: #ff9900;
 		width: 40%;
 		height: 25px;
@@ -145,21 +166,21 @@
 	}
 
 	.page-body-ms {
-		background-image: url("http://localhost:3000/images/viewBackground.jpg");
+		background-image: url("http://localhost:3000/images/silverbg.jpg");
 		background-repeat: no-repeat;
-		background-size: 100% 550px;
-		height: 550px;
+		background-size: 100% 700px;
+		height: 600px !important;
 		width: 100%;
 		/*background-color: #404040 !important;*/
-		opacity: 0.5%
+		font-size: 1.15em;
 	}
 
 	#shareurl {
-		color: #003366;
+		color: #00004d;
 		float: right;
 		margin-right: 5%;
 		margin-top: 1% !important;
-		font-size: 1.2em;
+		font-size: 1.3em;
 	}
 
 	#signout {
