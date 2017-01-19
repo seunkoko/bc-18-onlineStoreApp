@@ -63,17 +63,24 @@
 			let productName = $( "#productName" ).val();
 			let productPrice = $( "#productPrice" ).val();
 			let productCat = $( "#productCat" ).val();
-			let productImage = $( "#imageToUpload" ).val();
+			// let productImage = $( "#imageToUpload" ).val();
 			let productStock = $( "#productStock" ).val();
-			console.log(productName + " " + productPrice + " " + productCat + " " + productImage + " " + productStock);
+
+			addProduct(username, productName, productPrice, productCat, productStock);
 			
-			let imageTested = testUploadedImage(productImage); 
-			let imageToSave = productImage.split("\\");
-			if (imageTested) {
-				addProduct(username, productName, productPrice, productCat, productStock);
-			} else {
-				addProduct(username, productName, productPrice, productCat, productStock);
-			}	
+			// let imageTested = testUploadedImage(productImage); 
+			// let imageToSave = productImage.split("\\");
+			// if (imageTested) {
+			// 	addProduct(username, productName, productPrice, productCat, productStock);
+			// } else {
+			// 	addProduct(username, productName, productPrice, productCat, productStock);
+			// }	
+
+			$( "#divViewProduct" ).show('slow');
+			$( "#divAddProduct" ).hide('slow');	
+			$( "#divViewProduct" ).css("background-color", "#ffffff");
+			$( "#divViewProduct" ).css("width", "auto");
+			onloadViewProduct(username, "#divViewProduct");
 		});	
 
 		$( "#addProduct" ).click(function() {
