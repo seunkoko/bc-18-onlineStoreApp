@@ -7,7 +7,14 @@
 		storageBucket: "online-store-app.appspot.com",
 		messagingSenderId: "814616524832"
 	};
- 	var FIR = firebase.initializeApp(config),
+	// var config = {
+	// 	apiKey: process.env.APIKEY,
+	// 	authDomain: process.env.AUTHDOMAIN,
+	// 	databaseURL: process.env.DATABASEURL,
+	// 	storageBucket: process.env.STORAGEBUCKET,
+	// 	messagingSenderId: process.env.MESSAGINGSENDERID
+	// };
+	var FIR = firebase.initializeApp(config),
 		ref = FIR.database().ref(),
 	userRef = FIR.database().ref('users'); 
 
@@ -21,6 +28,10 @@
 
 		// handles page layout
 		$( "#signup" ).hide();
+
+		$( ".loginMainPage" ).css("background-image", "url(" + routebase + "/images/loginBackground.jpg)");
+
+		$( ".main" ).css("background-image", "url(" + routebase + "/images/silverbg.jpg)");
 
 		$( "#loginBtn" ).click(function() {
 			event.preventDefault();

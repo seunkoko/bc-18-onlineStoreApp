@@ -1,4 +1,4 @@
-
+	
 	// setting up the database
 	var config = {
 		apiKey: "AIzaSyByIWjvUEphiXmv0RmtRMAHnZYu3PYBvTA",
@@ -7,14 +7,19 @@
 		storageBucket: "online-store-app.appspot.com",
 		messagingSenderId: "814616524832"
 	};
+	// var config = {
+	// 	apiKey: process.env.APIKEY,
+	// 	authDomain: process.env.AUTHDOMAIN,
+	// 	databaseURL: process.env.DATABASEURL,
+	// 	storageBucket: process.env.STORAGEBUCKET,
+	// 	messagingSenderId: process.env.MESSAGINGSENDERID
+	// };
  	var FIR = firebase.initializeApp(config);
 	var	ref = FIR.database().ref();
 	var userRef = FIR.database().ref('users'); 
 	
 	// DOM manipulation
 	$(document).ready(function() {
-		console.log(document.URL);
-		
 		let usernameArray = (document.URL).split('/');
 		let username = decodeURI(usernameArray[usernameArray.length - 1].split('-')[0]);
 		let route = usernameArray;
@@ -24,7 +29,14 @@
 		
 		$( "#sharedHeader" ).text(username.toUpperCase() + " Store"); 
 
-		onloadViewProduct(username, "#sharedMain");
+		$( ".page-body-ms" ).css("background-image", "url(" + routebase + "/images/silverbg.jpg)");
+
+		$( "#sharedView" ).css("background-image", "url(" + routebase + "/images/silverbg.jpg)");
+
+		$ ( "#page-footer" ).css("background-color", "#f2f2f2");
+		$ ( "#page-footer" ).css("border-top", "thick double #999999");
+
+		onloadViewProduct(username, "#sharedView");
 
 		let usernameUpper = username.toUpperCase();
 		$( "#headerText" ).text(usernameUpper + " Store"); 
@@ -72,6 +84,8 @@
 		$( "#viewProduct" ).click(function() {
 			$( "#divViewProduct" ).show('slow');
 			$( "#divAddProduct" ).hide('slow');	
+			$( "#divViewProduct" ).css("background-color", "#ffffff");
+			$( "#divViewProduct" ).css("width", "auto");
 			onloadViewProduct(username, "#divViewProduct");
 		});
 

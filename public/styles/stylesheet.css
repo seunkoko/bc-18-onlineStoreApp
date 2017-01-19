@@ -56,7 +56,7 @@
 	}
 
 	.loginMainPage {
-		background-image: url("http://localhost:3000/images/loginBackground.jpg");
+		/*background-image: url("http://localhost:3000/images/loginBackground.jpg");*/
 		background-repeat: no-repeat;
 		background-size: 100% 550px;
 		width: auto !important;
@@ -67,8 +67,8 @@
 	.main {
 		/*background-color: #f2f2f2;*/
 		background-color: #0d0d0d;
-		background-image: url("http://localhost:3000/images/silverbg.jpg");
-		/*border-style: solid;
+		/*background-image: url("http://localhost:3000/images/silverbg.jpg");
+		border-style: solid;
 		border-color: #f0f5f5;
 		border-width: 2px;*/
 		margin-top: 8% !important;
@@ -142,8 +142,10 @@
 	}
 
 	.productImage {
-		height: 120px;
+		height: 140px;
 		width: 100%;
+		border-style: groove;
+		box-shadow: 10px 10px 5px #888888;
 	}
 
 	.priceHolder {
@@ -166,11 +168,13 @@
 	}
 
 	.page-body-ms {
-		background-image: url("http://localhost:3000/images/silverbg.jpg");
+		/*background-image: url("http://localhost:3000/images/silverbg.jpg");*/
 		background-repeat: no-repeat;
 		background-size: 100% 700px;
 		height: 600px !important;
 		width: 100%;
+		padding-left: 0px !important;
+		margin: 0px !important;
 		/*background-color: #404040 !important;*/
 		font-size: 1.15em;
 	}
@@ -191,8 +195,7 @@
 		padding-top: 3% !important;
 		padding-bottom: 5% !important;
 		height: 100% !important;
-		margin-right: 10px !important;
-		margin-left: 10px !important;
+		margin-left: 0px !important;
 	}
 
 	#divAddProduct {
