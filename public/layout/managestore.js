@@ -36,6 +36,7 @@
 		$ ( "#page-footer" ).css("background-color", "#f2f2f2");
 		$ ( "#page-footer" ).css("border-top", "thick double #999999");
 
+		emptyViewDiv("#sharedView");
 		onloadViewProduct(username, "#sharedView");
 
 		let usernameUpper = username.toUpperCase();
@@ -102,7 +103,8 @@
 	function onloadViewProduct(name, appendiv) {
 
 		userRef.on("value", function(snapshot) {
-			emptyViewDiv();
+			emptyViewDiv("#divViewProduct");
+			emptyViewDiv("#sharedView");
 
 			for (userKey in snapshot.val()) {
 				if (snapshot.val()[userKey].username === name) {
@@ -136,8 +138,8 @@
 		});
 	}
 
-	function emptyViewDiv() {
-		$("#divViewProduct").empty();
+	function emptyViewDiv(divToEmpty) {
+		$(divToEmpty).empty();
 	}
 
 	// function that appends the products attached to a store for display
@@ -163,6 +165,10 @@
 
 		if (!certifyStock || !certifyPrice) {
 			alert("Price should be a number");
+		}  else if (productPrice < 0) {
+			alert("Price cannot be a negative value");
+		} else if (productStock <= 0) {
+			alert("Stock should be more than 0");
 		} else if (!isFieldEmpty(productName, productPrice)) {
 			alert("Enter details in all boxes");
 		} else {
