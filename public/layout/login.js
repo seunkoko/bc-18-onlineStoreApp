@@ -7,15 +7,8 @@
 		storageBucket: "online-store-app.appspot.com",
 		messagingSenderId: "814616524832"
 	};
-	// var config = {
-	// 	apiKey: process.env.APIKEY,
-	// 	authDomain: process.env.AUTHDOMAIN,
-	// 	databaseURL: process.env.DATABASEURL,
-	// 	storageBucket: process.env.STORAGEBUCKET,
-	// 	messagingSenderId: process.env.MESSAGINGSENDERID
-	// };
-	var FIR = firebase.initializeApp(config),
-		ref = FIR.database().ref(),
+	var FIR = firebase.initializeApp(config);
+	var ref = FIR.database().ref(),
 	userRef = FIR.database().ref('users'); 
 
 	// DOM Manipulation
@@ -24,7 +17,6 @@
 		let route = usernameArray;
 		route.pop();
 		let routebase = decodeURI(route.join("/"));
-		console.log(routebase);
 
 		// handles page layout
 		$( "#signup" ).hide();
@@ -33,16 +25,14 @@
 
 		$( ".main" ).css("background-image", "url(" + routebase + "/images/silverbg.jpg)");
 
-		$( "#loginBtn" ).click(function() {
+		$( "#loginBtn" ).click(function() {	
 			event.preventDefault();
-			console.log("#loginBtn active");
 			login(routebase);
 		});
 
 		$( "#signupBtn" ).on('click', function(event) {
-		event.preventDefault(); 
-			console.log("#signupBtn active");
-			signup(routebase);		
+			event.preventDefault(); 
+			signup(routebase);	
 		});
 
 		signupShow();
@@ -53,7 +43,7 @@
 	// function that displays the signup Div
 	function signupShow() {
 		$( "#linkSignup" ).click(function() {
-			console.log("#linkSignup active");
+			emptyDiv("#loginError");
 			$( "#login" ).hide('slow');
 			$( "#signup" ).show('slow');
 		});
@@ -62,7 +52,7 @@
 	// function that displays the login Div
 	function loginShow() {
 		$( "#linkLogin" ).click(function() {
-			console.log("#linkLogin active");
+			emptyDiv("#loginError");
 			$( "#signup" ).hide('slow');
 			$( "#login" ).show('slow');
 		});
@@ -89,7 +79,6 @@
 		var boolToReturn = false;
 
 		userRef.orderByChild("username").on("child_added", function(data) {
-			// console.log(data.val().username);
 			if (data.val().username === name) {
 				boolToReturn = true;
 			}
@@ -107,20 +96,16 @@
 		let errorMessage = "";
 		let success = true;
 
-		console.log(username + " " + email + " " + password);
-
 		let certify = signupInfo(username, email, password);
 		let validateemail = validateEmail(email);
 		let validateusername = validateUsername(username);
-		console.log("certify: " + certify); 
-		console.log("email: " + validateemail);
-		console.log("username: " + validateusername);
 
 		// if (validateusername) {
 		// 	alert("Username already taken");
 		// } else 
+
 		if (!validateemail) {
-			alert("Enter a correct email address");
+			displayError("#loginError", "Enter a correct email address");
 		} else if (validateemail && certify) {
 			FIR.auth().createUserWithEmailAndPassword(email, password).then(function(){
 				userRef.push ({
@@ -134,12 +119,10 @@
 				success = false;
 				errorCode = error.code;
 				errorMessage = error.message;
-				console.log(errorCode);
-				console.log(errorMessage);
-				alert(errorMessage);
+				displayError("#loginError", errorMessage);
 			});
 		} else {
-			alert("Ensure all fields are properly filled");
+			displayError("#loginError", "Ensure all fields are properly filled");
 		}
 	}
 
@@ -159,9 +142,21 @@
 
 		if (certify) {
 			location.href = routebase + "/managestore/" + loginkey;
+		} else if ((username.length === 0) || (password.length === 0)) {
+			displayError("#loginError", "username or password required");
 		} else {
-			alert("username/password incorrect");
+			displayError("#loginError", "username or password incorrect");
 		}
+	}
+
+	// function that displays errors
+	function displayError (div, errorMessage) {
+		$(div).text(errorMessage);
+	}
+
+	// function to empty divs
+	function emptyDiv(div) {
+		$(div).empty();
 	}
 
 

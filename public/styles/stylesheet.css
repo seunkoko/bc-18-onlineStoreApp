@@ -1,6 +1,5 @@
 
 	* {
-		/*font-family: "jaf-facitweb","Helvetica Neue",Arial,sans-serif;*/
 		font-family: "Comic Sans MS", cursive, sans-serif;
 		font-weight: bold;
 		color: #0d0d0d;
@@ -8,10 +7,6 @@
 		padding-top: 0px !important;
 		padding-right: 0px !important;
 		margin-bottom: 0px !important;
-		/*margin-left: 0px !important;
-		margin-right: 0px !important;	
-		padding-left: 0px !important;
-		padding-bottom: 0px !important; */
 	}
 
 	.glyphicon {
@@ -65,12 +60,8 @@
 	}
 
 	.main {
-		/*background-color: #f2f2f2;*/
 		background-color: #0d0d0d;
-		/*background-image: url("http://localhost:3000/images/silverbg.jpg");
-		border-style: solid;
-		border-color: #f0f5f5;
-		border-width: 2px;*/
+		/*background-image: url("http://localhost:3000/images/silverbg.jpg");*/
 		margin-top: 8% !important;
 		padding: 3% !important;
 		opacity: 0.9;
@@ -84,7 +75,6 @@
 		margin-top: 7% !important;
 		display: block;
 		font-size: 1.3em;
-		/*color: #0040ff !important;*/
 		color: #000000 !important;
 		cursor: pointer;
 	}
@@ -113,7 +103,6 @@
 		border-width: 2px;
 		float: right;
 		width: 12%;
-		/*margin-right: 2% !important;*/
 		padding-right: 2% !important;
 		cursor: pointer;
 		text-align: right;
@@ -175,8 +164,28 @@
 		width: 100%;
 		padding-left: 0px !important;
 		margin: 0px !important;
-		/*background-color: #404040 !important;*/
 		font-size: 1.15em;
+	}
+
+	.errorMessage {
+		color: #cc0000;
+		font-size: 1.5em !important;
+		margin-bottom: 15px !important;
+		text-align: center !important;
+		opacity: 1 !important;
+	}
+
+	.toBlue {
+		color: #001a66 !important;
+		font-size: 1.5em !important;
+		margin-bottom: 15px !important;
+		text-align: center !important;
+		opacity: 1 !important;
+	}
+
+	#errorDiv {
+		font-size: 1.2em !important;
+		color: #990000 !important;
 	}
 
 	#shareurl {

@@ -7,13 +7,6 @@
 		storageBucket: "online-store-app.appspot.com",
 		messagingSenderId: "814616524832"
 	};
-	// var config = {
-	// 	apiKey: process.env.APIKEY,
-	// 	authDomain: process.env.AUTHDOMAIN,
-	// 	databaseURL: process.env.DATABASEURL,
-	// 	storageBucket: process.env.STORAGEBUCKET,
-	// 	messagingSenderId: process.env.MESSAGINGSENDERID
-	// };
  	var FIR = firebase.initializeApp(config);
 	var	ref = FIR.database().ref();
 	var userRef = FIR.database().ref('users'); 
@@ -49,23 +42,20 @@
 		$( "#signout" ).on('click', function(event) {
 			event.preventDefault(); 
 			FIR.auth().signOut().then(function() {
-				alert("Logged out");
 				location.href = routebase;
 			}, function(error) {
-				console.log(error.code);
-				console.log(error.message);
+				alert(error.Message);
 			});
 		});
 
 		$( "#productaddBtn" ).on('click', function(event) {
 			event.preventDefault(); 
-			console.log("#productaddBtn active");
 
 			let productName = $( "#productName" ).val();
 			let productPrice = $( "#productPrice" ).val();
 			let productCat = $( "#productCat" ).val().toLowerCase();
-			// let productImage = $( "#imageToUpload" ).val();
 			let productStock = $( "#productStock" ).val();
+			// let productImage = $( "#imageToUpload" ).val();
 
 			addProduct(username, productName, productPrice, productCat, productStock);
 			
@@ -77,14 +67,16 @@
 			// 	addProduct(username, productName, productPrice, productCat, productStock);
 			// }	
 
-			$( "#divViewProduct" ).show('slow');
-			$( "#divAddProduct" ).hide('slow');	
-			$( "#divViewProduct" ).css("background-color", "#ffffff");
-			$( "#divViewProduct" ).css("width", "auto");
-			onloadViewProduct(username, "#divViewProduct");
+			// $( "#divViewProduct" ).show('slow');
+			// $( "#divAddProduct" ).hide('slow');	
+			// $( "#divViewProduct" ).css("background-color", "#ffffff");
+			// $( "#divViewProduct" ).css("width", "auto");
+			// onloadViewProduct(username, "#divViewProduct");
 		});	
 
 		$( "#addProduct" ).click(function() {
+			emptyViewDiv("#errorDiv");
+			emptyViewDiv("#successDiv");
 			$( "#divAddProduct" ).show('slow');
 			$( "#divViewProduct" ).hide('slow');
 		});
@@ -108,7 +100,6 @@
 
 			for (userKey in snapshot.val()) {
 				if (snapshot.val()[userKey].username === name) {
-					// console.log(userKey);
 					let storeRef = FIR.database().ref('users/' + userKey + "/store");
 					storeRef.orderByKey().on("value", function(snapshot){
 
@@ -130,7 +121,7 @@
 						}
 
 					}, function(error) {
-						console.log("Error: " + error.code);
+						// console.log("Error: " + error.code);
 					});
 				}
 			}
@@ -155,7 +146,6 @@
 				+ "</div>" 
 				+ "</div>")
 		.appendTo(appendiv);
-		console.log(appendiv);
 	}
 
 	// function that updates the user's store account with details of product
@@ -164,26 +154,30 @@
 		let certifyStock = validatePrice(productStock);
 
 		if (!certifyStock || !certifyPrice) {
-			alert("Price should be a number");
+			emptyViewDiv("#successDiv");
+			displayError("#errorDiv", "Price should be a number");
 		}  else if (productPrice < 0) {
-			alert("Price cannot be a negative value");
+			emptyViewDiv("#successDiv");
+			displayError("#errorDiv", "Price cannot be a negative value");
 		} else if (productStock <= 0) {
-			alert("Stock should be more than 0");
+			emptyViewDiv("#successDiv");
+			displayError("#errorDiv", "Stock should be more than 0");
 		} else if (!isFieldEmpty(productName, productPrice)) {
-			alert("Enter details in all boxes");
+			emptyViewDiv("#successDiv");
+			displayError("#errorDiv", "Enter details in all boxes");
 		} else {
 			userRef.orderByChild("username").on("child_added", function(data) {
 				if (data.val().username === userName) {
 					let storeRef = FIR.database().ref('users/' + data.key + "/store");
-					// console.log(storeRef);
 
 					storeRef.child(productName).set({
 						price: productPrice,
 						category: productCat,
 						stock: productStock
 					});
-
-					alert("Product added");
+					
+					emptyViewDiv("#errorDiv");
+					displayError("#successDiv", productName + " added");
 					setFieldEmpty("productName");
 					setFieldEmpty("productPrice");
 					setFieldEmpty("productStock");
@@ -197,7 +191,6 @@
 	function validatePrice(price) {
 		let regex = /[0-9]|\./;
 		let priceArray = price.split("");
-		// console.log(priceArray);
 
 		for (let i = 0; i < priceArray.length; i++) {
 			if (!regex.test(priceArray[i])) {
@@ -210,8 +203,6 @@
 
 	// function to check if the textfields are empty
 	function isFieldEmpty(productName, productPrice) {
-		console.log(productName.length + " " + productPrice.length);
-
 		if ((productName.length === 0) || (productPrice.length === 0)) {
 			return false;	
 		} else {
@@ -240,4 +231,8 @@
 		return false;
 	}
 
+	// function that displays errors
+	function displayError (div, errorMessage) {
+		$(div).text(errorMessage);
+	}
 
