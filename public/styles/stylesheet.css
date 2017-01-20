@@ -52,17 +52,17 @@
 
 	.loginMainPage {
 		/*background-image: url("http://localhost:3000/images/loginBackground.jpg");*/
-		background-color: #ffffff;
+		/*background-color: #ffffff;*/
 		background-repeat: no-repeat;
-		background-size: 100% 550px;
+		background-size: 700px 550px;
 		width: auto !important;
 		height: 560px !important;
 		opacity: 0.95;
 	}
 
 	.main {
-		background-color: #ffffff;
 		/*background-image: url("http://localhost:3000/images/silverbg.jpg");*/
+		background-color: #ffffff;
 		margin-top: 8% !important;
 		padding: 3% !important;
 		opacity: 0.9;
