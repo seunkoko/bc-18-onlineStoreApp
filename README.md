@@ -1,7 +1,7 @@
 # bc-18-onlineStoreApp
 
 ##Introduction
-######_*bc-18-onlineStoreApp*_ is an online store application where users can signup to gain access and control the content of their store
+####_*bc-18-onlineStoreApp*_ is an online store application where users can signup to gain access and control the content of their store
 * It has the following features;
 	* Allows users to create store.
 	* Allows users to add products to store.
@@ -21,7 +21,7 @@
 ##Installation and setup
 * Navigate to a directory of choice on terminal.
 * Clone this repository on that directory.
-	* Using HTTP;
+	* Using HTTP:
 		* https://github.com/seunkoko/bc-18-onlineStoreApp.git
 * Navigate to the repo's folder on your computer
 	* cd bc-18-onlineStoreApp/
