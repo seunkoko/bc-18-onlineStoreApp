@@ -21,8 +21,6 @@
 		// handles page layout
 		$( "#signup" ).hide();
 
-		$( ".loginMainPage" ).css("background-image", "url(" + routebase + "/images/loginBackground.jpg)");
-
 		$( ".main" ).css("background-image", "url(" + routebase + "/images/silverbg.jpg)");
 
 		$( "#loginBtn" ).click(function() {	

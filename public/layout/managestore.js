@@ -22,7 +22,7 @@
 		
 		$( "#sharedHeader" ).text(username.toUpperCase() + " Store"); 
 
-		$( ".page-body-ms" ).css("background-image", "url(" + routebase + "/images/silverbg.jpg)");
+		// $( ".page-body-ms" ).css("background-image", "url(" + routebase + "/images/silverbg.jpg)");
 
 		$( "#sharedView" ).css("background-image", "url(" + routebase + "/images/silverbg.jpg)");
 

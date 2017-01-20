@@ -52,6 +52,7 @@
 
 	.loginMainPage {
 		/*background-image: url("http://localhost:3000/images/loginBackground.jpg");*/
+		background-color: #ffffff;
 		background-repeat: no-repeat;
 		background-size: 100% 550px;
 		width: auto !important;
@@ -60,7 +61,7 @@
 	}
 
 	.main {
-		background-color: #0d0d0d;
+		background-color: #ffffff;
 		/*background-image: url("http://localhost:3000/images/silverbg.jpg");*/
 		margin-top: 8% !important;
 		padding: 3% !important;
@@ -158,9 +159,10 @@
 
 	.page-body-ms {
 		/*background-image: url("http://localhost:3000/images/silverbg.jpg");*/
+		background-color: #ffffff;
 		background-repeat: no-repeat;
 		background-size: 100% 700px;
-		height: 600px !important;
+		height: 800px !important;
 		width: 100%;
 		padding-left: 0px !important;
 		margin: 0px !important;

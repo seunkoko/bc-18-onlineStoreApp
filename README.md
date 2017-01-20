@@ -13,16 +13,15 @@
 ###Back End Dependencies
 * This app's functionality depends on the following frameworks;
 	* Express - This framework is used for routing.
+	* Firebase - This is a platform used for authentication for signup and login. It also handles the database.
 
 ###Front End Dependencies
-* Firebase - This is a platform used for authentication for signup and login. It also handles the database.
 * JQuery - This is a javascript framework used for DOM manipulations.
 
 ##Installation and setup
 * Navigate to a directory of choice on terminal.
 * Clone this repository on that directory.
-	* Using HTTP:
-		* https://github.com/seunkoko/bc-18-onlineStoreApp.git
+	* Using HTTP: https://github.com/seunkoko/bc-18-onlineStoreApp.git
 * Navigate to the repo's folder on your computer
 	* cd bc-18-onlineStoreApp/
 * Install the app's backend dependencies.
